@@ -1,25 +1,18 @@
-/* =========================
-   FONTS
-========================= */
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
- 
-/* =========================
-   VARIABLES
-========================= */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+
 :root {
-  --card-bg:      rgba(245, 249, 251, 0.84);
-  --card-border:  rgba(131, 161, 193, 0.32);
-  --deep:         #1c2a32;
-  --mid:          #445662;
-  --muted:        #7e95a0;
-  --steel:        #6d9aad;
-  --accent:       #4d8fad;
-  --light:        #d4e8f0;
-  --radius-sm:    8px;
-  --radius-md:    14px;
-  --radius-lg:    20px;
+  --bg:        #eaf4ec;
+  --dark:      #1b4332;
+  --orange:    #f4a259;
+  --peach:     #ffd6a5;
+  --sage:      #a7d7b8;
+  --sky:       #9ccfe6;
+  --white:     #ffffff;
+  --text:      #1b4332;
+  --text-soft: #40594c;
+  --radius:    10px;
 }
- 
+
 /* =========================
    GLOBAL / RESET
 ========================= */
@@ -28,270 +21,340 @@
   margin: 0;
   padding: 0;
 }
- 
+body { cursor: image-set(url("cursor2.png") 6x) 0 0, auto; }
+a, button { cursor: image-set(url("pointer2.png") 6x) 0 0, pointer; }
+
 body {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  background-color: #88a0ae;
-  background-image: url("starry_sun.jpg");
-  background-size: cover;
-  background-repeat: repeat-y;
-  background-attachment: fixed;
-  color: var(--deep);
+  font-family: 'Work Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.7;
 }
- 
+
+/* =========================
+   LINKS
+========================= */
+a { color: #2d6a4f; }
+a:visited { color: #6b8f7c; }
+a:hover { color: var(--dark); }
+
 /* =========================
    NAVBAR
 ========================= */
 .navbar {
-  background-color: rgba(28, 42, 50, 0.90);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 1em 2.5em;
+  background: var(--dark);
+  padding: 0.8em 2.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(131, 161, 193, 0.18);
 }
- 
+
 .navbar-left img {
-  height: 32px;
-  opacity: 0.9;
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--orange);
 }
- 
+
 .navbar-right {
   list-style: none;
   display: flex;
-  gap: 2.2em;
+  align-items: center;
+  gap: 1.6em;
 }
- 
+
 .navbar-right a {
-  color: var(--steel);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.9em;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  padding: 0.3em 0;
+  position: relative;
   transition: color 0.2s ease;
 }
- 
-.navbar-right a:hover {
-  color: var(--light);
+
+/* the underline: always there, but squashed to zero width */
+.navbar-right a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
 }
- 
-.navbar-right a:visited {
-  color: var(--muted);
-}
- 
+
+.navbar-right a:visited { color: #b5cfc0; }
+
+/* on hover it grows out from the middle to full width */
+.navbar-right a:hover { color: var(--orange); }
+
+.navbar-right a:hover::after { transform: scaleX(1); }
+
+.navbar-right a.nav-highlight { font-weight: 700; }
+
 /* =========================
    PAGE LAYOUT
 ========================= */
 .home-card {
-  max-width: 1100px;
+  max-width: 1050px;
   margin: 2.5em auto;
   padding: 0 1.5em;
 }
- 
+
 /* =========================
    CARDS
 ========================= */
 .resource-card,
 .CFU {
-  background-color: var(--card-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  margin: 2em auto;
+  background: var(--white);
+  margin: 1.6em auto;
   padding: 2em 2.2em;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--card-border);
-  color: var(--deep);
+  border-radius: var(--radius);
+  border: 2px solid var(--dark);
+  color: var(--text);
 }
- 
-.CFU {
-  border-left: 3px solid var(--accent);
-}
- 
+
 /* =========================
-   BIO SECTION
+   BIO SECTION (horizontal)
 ========================= */
+.bio-card { background: var(--orange); }
+
 .bio {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  padding: 1em 0 0.5em;
+  gap: 2.2em;
+  text-align: left;
 }
- 
+
 .bio-pic img {
-  width: 140px;
-  height: 140px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
-  border: 3px solid var(--steel);
+  border: 4px solid var(--dark);
   object-fit: cover;
-  margin-bottom: 1em;
+  display: block;
 }
- 
+
 .bio-text h1 {
-  font-family: 'Lora', serif;
-  font-weight: 500;
-  font-size: 2em;
-  color: var(--deep);
-  margin-bottom: 0.15em;
+  font-weight: 700;
+  font-size: 2.2em;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.1em;
 }
- 
+
 .bio-text h4 {
-  font-weight: 300;
-  color: var(--mid);
+  font-weight: 500;
+  color: var(--dark);
   font-size: 1em;
-  margin-top: 0;
+  margin: 0 0 0.8em;
 }
- 
+
+.bio-text p { color: var(--dark); }
+
 /* =========================
-   HEADINGS (global)
+   HEADINGS
 ========================= */
 h2, h3 {
-  font-family: 'Lora', serif;
-  font-weight: 500;
-  color: var(--deep);
+  font-weight: 600;
+  color: var(--dark);
 }
- 
-h2 {
-  font-size: 1.3em;
-  margin-bottom: 0.5em;
-}
- 
+
 h3 {
-  font-size: 1.1em;
+  font-size: 1.15em;
   margin-bottom: 0.4em;
 }
- 
+
 p {
-  color: var(--mid);
-  font-size: 0.95em;
+  color: var(--text-soft);
+  font-size: 0.97em;
 }
- 
+
 /* =========================
-   PROJECT LAYOUT
+   CFU LAYOUT
+   (every other CFU flips sides, panel colors cycle)
 ========================= */
 .project {
   display: flex;
-  gap: 1.5em;
-  align-items: flex-start;
+  gap: 1.6em;
+  align-items: stretch;
 }
- 
+
+.CFU:nth-of-type(even) .project { flex-direction: row-reverse; }
+
 .project iframe {
   flex: 2;
   min-width: 320px;
   height: 450px;
-  border: none;
-  background-color: white;
-  border-radius: var(--radius-md);
+  border: 2px solid var(--dark);
+  background: #fff;
+  border-radius: var(--radius);
 }
- 
+
 .reflection {
   flex: 1;
-  background-color: rgba(200, 225, 238, 0.42);
-  padding: 1.2em 1.4em;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--card-border);
-}
- 
-.reflection h3 {
-  color: var(--accent);
-}
- 
-.reflection p {
-  font-size: 0.93em;
-  color: var(--mid);
-}
- 
-/* =========================
-   LINKS / ICONS
-========================= */
-.skill-images {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.2em;
-  margin-top: 1em;
+  flex-direction: column;
+  padding: 1.5em 1.6em;
+  border-radius: var(--radius);
+  border: 2px solid var(--dark);
+  background: var(--sage);
 }
- 
-.picture {
-  transition: transform 0.2s ease;
+
+.CFU:nth-of-type(3n+1) .reflection { background: var(--sage); }
+.CFU:nth-of-type(3n+2) .reflection { background: var(--sky); }
+.CFU:nth-of-type(3n)   .reflection { background: var(--peach); }
+
+.reflection h3,
+.reflection p,
+.reflection strong { color: var(--dark); }
+
+.reflection p { margin-bottom: 0.6em; }
+
+.meta {
+  margin-top: auto;
+  padding-top: 0.8em;
+  border-top: 2px solid var(--dark);
 }
- 
-.picture:hover {
-  transform: translateY(-3px);
-}
- 
-.link-pic {
-  height: 78px;
-  width: 78px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--steel);
-  object-fit: cover;
-}
- 
+
+.meta p { margin-bottom: 0.2em; }
+
 /* =========================
    FOOTER
 ========================= */
 footer {
   text-align: center;
-  font-size: 0.82em;
-  color: var(--muted);
-  padding: 2em 1em;
+  background: var(--dark);
+  padding: 1.4em 1em;
+  margin-top: 3em;
 }
- 
+
+footer p { color: #ffffff; font-size: 0.85em; }
+
+/* =========================
+   HOVER EFFECTS
+========================= */
+
+/* cards lift up and get a solid offset edge */
+.resource-card,
+.CFU {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover,
+.CFU:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--dark);
+}
+
+footer.resource-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* the colored panel next to each project turns white */
+.reflection { transition: background-color 0.2s ease; }
+.reflection:hover { background: var(--white); }
+
+/* project window gets a colored border */
+.project iframe { transition: border-color 0.2s ease; }
+.project iframe:hover { border-color: var(--orange); }
+
+/* link icons pop up and grow slightly */
+.picture { transition: transform 0.2s ease; }
+.picture:hover { transform: translateY(-5px) scale(1.08); }
+.link-pic { transition: border-color 0.2s ease; }
+.picture:hover .link-pic { border-color: var(--orange); }
+
+/* nav bar profile icon grows */
+.navbar-left img { transition: transform 0.2s ease; }
+.navbar-left img:hover { transform: scale(1.12); }
+
+/* =========================
+   EXTRAS
+========================= */
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: var(--orange);
+  color: var(--dark);
+}
+
+a:focus-visible,
+iframe:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .resource-card:hover,
+  .CFU:hover,
+  .picture:hover,
+  .navbar-left img:hover { transform: none; }
+}
+
+@media print {
+  .navbar { display: none; }
+  body { background: #fff; }
+  .resource-card,
+  .reflection { background: #fff !important; }
+}
+
 /* =========================
    MISC UTILITIES
 ========================= */
-.sixseven {
-  text-align: center;
-}
- 
+.sixseven { text-align: center; }
+
 .pochita {
   width: 50px;
   height: 65px;
 }
- 
+
 /* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 900px) {
-  .project {
-    flex-direction: column;
-  }
- 
+  .project,
+  .CFU:nth-of-type(even) .project { flex-direction: column; }
+
   .project iframe {
     width: 100%;
     min-width: 0;
     height: 350px;
   }
 }
- 
-@media (max-width: 600px) {
+
+@media (max-width: 700px) {
   .navbar {
     flex-direction: column;
-    gap: 0.8em;
-    padding: 1em 1.5em;
+    gap: 0.7em;
+    padding: 0.9em 1.2em;
   }
- 
+
   .navbar-right {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.2em;
+    gap: 1em;
   }
- 
-  .home-card {
-    padding: 0 1em;
-  }
- 
+
+  .home-card { padding: 0 1em; }
+
   .resource-card,
-  .CFU {
-    padding: 1.4em 1.5em;
+  .CFU { padding: 1.4em; }
+
+  .bio {
+    flex-direction: column;
+    text-align: center;
   }
 }

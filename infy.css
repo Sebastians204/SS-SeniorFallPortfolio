@@ -1,1 +1,403 @@
- 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:        #eaf2f2;
+  --dark:      #222831;
+  --teal:      #00909e;
+  --lemon:     #ffe08a;
+  --aqua:      #bfe6e9;
+  --blush:     #f8c9cc;
+  --mint:      #c8e6c9;
+  --white:     #ffffff;
+  --text:      #222831;
+  --text-soft: #4b5560;
+  --radius:    10px;
+}
+
+/* =========================
+   GLOBAL / RESET
+========================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body { cursor: image-set(url("cursor2.png") 6x) 0 0, auto; }
+a, button { cursor: image-set(url("pointer2.png") 6x) 0 0, pointer; }
+
+body {
+  font-family: 'Work Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* =========================
+   LINKS
+========================= */
+a { color: #007785; }
+a:visited { color: #5f8a90; }
+a:hover { color: var(--dark); }
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  background: var(--dark);
+  padding: 0.8em 2.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-left img {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--lemon);
+}
+
+.navbar-right {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.6em;
+}
+
+.navbar-right a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9em;
+  padding: 0.3em 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* the underline: always there, but squashed to zero width */
+.navbar-right a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--lemon);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.navbar-right a:visited { color: #b5c0c6; }
+
+/* on hover it grows out from the middle to full width */
+.navbar-right a:hover { color: var(--lemon); }
+
+.navbar-right a:hover::after { transform: scaleX(1); }
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+.home-card {
+  max-width: 1050px;
+  margin: 2.5em auto;
+  padding: 0 1.5em;
+}
+
+/* =========================
+   CARDS
+========================= */
+.resource-card,
+.CFU {
+  background: var(--white);
+  margin: 1.6em auto;
+  padding: 2em 2.2em;
+  border-radius: var(--radius);
+  border: 2px solid var(--dark);
+  color: var(--text);
+}
+
+/* first card on the page (bio) gets a color */
+.home-card > .resource-card:first-of-type { background: var(--blush); }
+
+.CFU { border-left: 8px solid var(--teal); }
+
+/* =========================
+   BIO SECTION (horizontal)
+========================= */
+.bio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.2em;
+  text-align: left;
+}
+
+.bio-pic img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 4px solid var(--dark);
+  object-fit: cover;
+  display: block;
+}
+
+.bio-text h1 {
+  font-weight: 700;
+  font-size: 2.2em;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.1em;
+}
+
+.bio-text h4 {
+  font-weight: 500;
+  color: var(--dark);
+  font-size: 1em;
+  margin: 0 0 0.8em;
+}
+
+.bio-text p { color: var(--dark); }
+
+/* =========================
+   HEADINGS
+========================= */
+h2, h3 {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+h2 {
+  font-size: 1.4em;
+  margin-bottom: 0.4em;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: 0.4em;
+  background: var(--dark);
+}
+
+h3 {
+  font-size: 1.15em;
+  margin-bottom: 0.4em;
+}
+
+p {
+  color: var(--text-soft);
+  font-size: 0.97em;
+}
+
+/* =========================
+   PROJECT LAYOUT
+   (every other card flips sides, panel colors cycle)
+========================= */
+.project {
+  display: flex;
+  gap: 1.6em;
+  align-items: stretch;
+}
+
+.resource-card:nth-of-type(even) .project,
+.CFU:nth-of-type(even) .project { flex-direction: row-reverse; }
+
+.project iframe {
+  flex: 2;
+  min-width: 320px;
+  height: 450px;
+  border: 2px solid var(--dark);
+  background: #fff;
+  border-radius: var(--radius);
+}
+
+.reflection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5em 1.6em;
+  border-radius: var(--radius);
+  border: 2px solid var(--dark);
+  background: var(--aqua);
+}
+
+.resource-card:nth-of-type(3n+1) .reflection,
+.CFU:nth-of-type(3n+1) .reflection { background: var(--aqua); }
+.resource-card:nth-of-type(3n+2) .reflection,
+.CFU:nth-of-type(3n+2) .reflection { background: var(--lemon); }
+.resource-card:nth-of-type(3n) .reflection,
+.CFU:nth-of-type(3n) .reflection { background: var(--mint); }
+
+.reflection h3,
+.reflection p,
+.reflection strong { color: var(--dark); }
+
+.reflection p { margin-bottom: 0.6em; }
+
+/* =========================
+   LINKS / ICONS
+========================= */
+.skill-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2em;
+  margin-top: 1em;
+}
+
+.picture { border-radius: var(--radius); }
+
+.link-pic {
+  height: 78px;
+  width: 78px;
+  border-radius: var(--radius);
+  border: 3px solid var(--dark);
+  object-fit: cover;
+  background: #fff;
+  display: block;
+}
+
+.picture:hover .link-pic { border-color: var(--teal); }
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  background: var(--dark);
+  padding: 1.4em 1em;
+  margin-top: 3em;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+  color: #ffffff;
+}
+
+footer p { color: #ffffff; font-size: 0.85em; }
+
+/* =========================
+   HOVER EFFECTS
+========================= */
+
+/* cards lift up and get a solid offset edge */
+.resource-card,
+.CFU {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover,
+.CFU:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--dark);
+}
+
+footer.resource-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* the colored panel next to each project turns white */
+.reflection { transition: background-color 0.2s ease; }
+.reflection:hover { background: var(--white); }
+
+/* project window gets a colored border */
+.project iframe { transition: border-color 0.2s ease; }
+.project iframe:hover { border-color: var(--teal); }
+
+/* link icons pop up and grow slightly */
+.picture { transition: transform 0.2s ease; }
+.picture:hover { transform: translateY(-5px) scale(1.08); }
+.link-pic { transition: border-color 0.2s ease; }
+.picture:hover .link-pic { border-color: var(--teal); }
+
+/* nav bar profile icon grows */
+.navbar-left img { transition: transform 0.2s ease; }
+.navbar-left img:hover { transform: scale(1.12); }
+
+/* =========================
+   EXTRAS
+========================= */
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: var(--lemon);
+  color: var(--dark);
+}
+
+a:focus-visible,
+iframe:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .resource-card:hover,
+  .CFU:hover,
+  .picture:hover,
+  .navbar-left img:hover { transform: none; }
+}
+
+@media print {
+  .navbar { display: none; }
+  body { background: #fff; }
+  .resource-card,
+  .reflection { background: #fff !important; }
+}
+
+/* =========================
+   MISC UTILITIES
+========================= */
+.sixseven { text-align: center; }
+
+.pochita {
+  width: 50px;
+  height: 65px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .project,
+  .resource-card:nth-of-type(even) .project,
+  .CFU:nth-of-type(even) .project { flex-direction: column; }
+
+  .project iframe {
+    width: 100%;
+    min-width: 0;
+    height: 350px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.7em;
+    padding: 0.9em 1.2em;
+  }
+
+  .navbar-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .home-card { padding: 0 1em; }
+
+  .resource-card,
+  .CFU { padding: 1.4em; }
+
+  .bio {
+    flex-direction: column;
+    text-align: center;
+  }
+}
