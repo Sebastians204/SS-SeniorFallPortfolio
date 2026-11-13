@@ -14,6 +14,15 @@
   --radius:    10px;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
 /* =========================
    GLOBAL / RESET
 ========================= */
@@ -23,10 +32,12 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
-body { cursor: image-set(url("cursor2.png") 6x) 0 0, auto; }
-a, button { cursor: image-set(url("pointer2.png") 6x) 0 0, pointer; }
-
+*, *::before, *::after {
+  cursor: image-set(url("cursor2.png") 6x) 0 0, auto;
+}
+a, a *, button, button * {
+  cursor: image-set(url("pointer2.png") 6x) 0 0, pointer;
+}
 body {
   font-family: 'Work Sans', system-ui, sans-serif;
   background: var(--bg);
@@ -41,7 +52,7 @@ a { color: #b3202f; }
 a:visited { color: #8a6f73; }
 a:hover { color: var(--dark); }
 
-a, button { cursor: image-set(url("pointer.png") 6x) 0 0, pointer; }
+
 
 /* =========================
    NAVBAR
