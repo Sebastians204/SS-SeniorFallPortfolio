@@ -7,14 +7,14 @@
    VARIABLES
 ========================= */
 :root {
-  --card-bg:      rgba(227, 222, 76, 0.753);
+  --card-bg:      #577c8e;
   --card-border:  rgba(131, 161, 193, 0.32);
   --deep:         #1c2a32;
   --mid:          #c0b698;
-  --muted:        #7e95a0;
+  --muted:        #000000;
   --steel:        #6d9aad;
   --accent:       #4d8fad;
-  --light:        #d4e8f0;
+  --light:        #000000;
   --radius-sm:    8px;
   --radius-md:    14px;
   --radius-lg:    20px;
@@ -32,7 +32,7 @@
 body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  background-color: #599897;
+  background-color: #9DA39A;
   background-image: url("starry_sun.jpg");
   background-size: cover;
   background-repeat: repeat-y;
@@ -45,7 +45,7 @@ body {
    NAVBAR
 ========================= */
 .navbar {
-  background-color: rgba(28, 42, 50, 0.90);
+  background-color: #2e3457;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1em 2.5em;
